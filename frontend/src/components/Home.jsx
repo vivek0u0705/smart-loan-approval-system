@@ -8,7 +8,11 @@ export default function Home({ onNavigate }) {
 
   useEffect(() => {
     // Check if Flask backend API is running
-    axios.get('https://smart-loan-approval-system.onrender.com/')
+    const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:5000'
+      : 'https://smart-loan-approval-system.onrender.com';
+
+    axios.get(`${API_URL}/`)
       .then((response) => {
         if (response.data && response.data.status === 'Ready') {
           setBackendStatus('Online');

@@ -37,8 +37,12 @@ export default function LoanForm({ onNavigate, onSubmitSuccess }) {
     setIsLoading(true);
     setErrorMsg('');
 
+    const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://127.0.0.1:5000'
+      : 'https://smart-loan-approval-system.onrender.com';
+
     // Query Flask API
-    axios.post('https://smart-loan-approval-system.onrender.com/predict', formData)
+    axios.post(`${API_URL}/predict`, formData)
       .then((response) => {
         setIsLoading(false);
         // Call callback passing API response and original input form data
@@ -49,7 +53,7 @@ export default function LoanForm({ onNavigate, onSubmitSuccess }) {
         if (error.response && error.response.data && error.response.data.error) {
           setErrorMsg(`Error: ${error.response.data.error}`);
         } else {
-          setErrorMsg('Error connecting to ML backend. Please verify that the Flask server is running on https://smart-loan-approval-system.onrender.com');
+          setErrorMsg(`Error connecting to ML backend. Please verify that the Flask server is running on ${API_URL}`);
         }
       });
   };
