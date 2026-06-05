@@ -106,8 +106,8 @@ export default function LoanForm({ onNavigate, onSubmitSuccess }) {
           <div className="form-group">
             <label className="form-label">Married Status</label>
             <select name="Married" value={formData.Married} onChange={handleChange} className="form-input form-select">
-              <option value="No">Single / Unmarried (No)</option>
-              <option value="Yes">Married (Yes)</option>
+              <option value="No">Single / Unmarried</option>
+              <option value="Yes">Married</option>
             </select>
           </div>
 
@@ -124,8 +124,8 @@ export default function LoanForm({ onNavigate, onSubmitSuccess }) {
           <div className="form-group">
             <label className="form-label">Employment Type</label>
             <select name="Self_Employed" value={formData.Self_Employed} onChange={handleChange} className="form-input form-select">
-              <option value="No">Salaried Employee (No)</option>
-              <option value="Yes">Self-Employed (Yes)</option>
+              <option value="No">Salaried</option>
+              <option value="Yes">Self-Employed</option>
             </select>
           </div>
 
